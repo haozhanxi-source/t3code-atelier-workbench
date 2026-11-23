@@ -548,15 +548,8 @@ body,
   line-height: 1.72 !important;
   letter-spacing: 0.01em;
   font-feature-settings: "palt" 1, "kern" 1;
-  font-size-adjust: from-font;
   overflow-wrap: break-word;
   text-wrap: pretty;
-}}
-
-@supports not (font-size-adjust: from-font) {{
-  .chat-markdown {{
-    line-height: 1.76 !important;
-  }}
 }}
 
 /* Editorial serif voice for headings & blockquotes */
@@ -584,8 +577,16 @@ body,
   font-size: 1.06rem !important;
 }}
 
-.chat-markdown p {{
-  margin-bottom: 0.85em !important;
+.chat-markdown > p:not(:last-child) {{
+  margin-bottom: 0.8em !important;
+}}
+
+.chat-markdown > :first-child {{
+  margin-top: 0 !important;
+}}
+
+.chat-markdown > :last-child {{
+  margin-bottom: 0 !important;
 }}
 
 .chat-markdown blockquote {{
@@ -597,13 +598,23 @@ body,
   margin: 0.95em 0 !important;
 }}
 
-/* Keep the final paragraph flush with the sent message bubble's padding. */
-[data-user-message-bubble] .chat-markdown {{
-  line-height: 1.55 !important;
+/* Keep sent user message bubbles snug to text (no pretty-wrap slack, no trailing gap). */
+[data-user-message-bubble].bg-message.p-3 {{
+  padding: 0.55rem 0.85rem !important;
 }}
 
-[data-user-message-bubble] .chat-markdown > p:last-child {{
-  margin-block-end: 0 !important;
+[data-user-message-bubble] .chat-markdown {{
+  line-height: 1.5 !important;
+  letter-spacing: 0 !important;
+  text-wrap: wrap !important;
+}}
+
+[data-user-message-bubble] .chat-markdown > p {{
+  margin-block: 0 !important;
+}}
+
+[data-user-message-bubble] .chat-markdown > p + p {{
+  margin-top: 0.45em !important;
 }}
 
 /* Precision monospace voice for code & inline tokens */
