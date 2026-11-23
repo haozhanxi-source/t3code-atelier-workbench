@@ -2,6 +2,17 @@
 
 A dual-mode (Dark + Light) editorial workbench theme for **[T3 Code](https://t3.codes)**, designed for long-form technical reading, bilingual CJK + Latin typography, and multi-device consistency (Desktop, Web, and Mobile Chrome Web).
 
+## Preview
+
+### Dark Mode · 夜读胡桃炭墨
+![Atelier Workbench Dark Mode](assets/preview-dark.png)
+
+### Light Mode · 白昼馆藏霜纸
+![Atelier Workbench Light Mode](assets/preview-light.png)
+
+### Mobile · Z Fold7 / Chrome Web
+<img src="assets/preview-mobile-dark.png" alt="Atelier Workbench Mobile Dark" width="380" />
+
 ## Design Highlights
 
 - **Dual-Mode Warm Neutrals (Zero Harsh Glare)**
