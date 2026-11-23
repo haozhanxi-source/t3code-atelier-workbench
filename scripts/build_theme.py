@@ -597,6 +597,15 @@ body,
   margin: 0.95em 0 !important;
 }}
 
+/* Keep the final paragraph flush with the sent message bubble's padding. */
+[data-user-message-bubble] .chat-markdown {{
+  line-height: 1.55 !important;
+}}
+
+[data-user-message-bubble] .chat-markdown > p:last-child {{
+  margin-block-end: 0 !important;
+}}
+
 /* Precision monospace voice for code & inline tokens */
 .chat-markdown code,
 .chat-markdown pre,
