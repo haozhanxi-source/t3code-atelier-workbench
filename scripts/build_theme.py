@@ -18,6 +18,7 @@ from __future__ import annotations
 
 import base64
 import json
+import os
 import pathlib
 import re
 import shutil
@@ -28,7 +29,6 @@ from typing import Any
 import numpy as np
 from PIL import Image
 
-import os
 REPO_ROOT = pathlib.Path(__file__).resolve().parent.parent
 THEME_ID = "atelier-workbench"
 OUT_DIR = REPO_ROOT
