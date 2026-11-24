@@ -29,8 +29,8 @@
    - **白昼模式（馆藏霜纸）**：暖象牙宣纸底（`#f8f5ef`）+ 极细内嵌 SVG 纸纤肌理 + 浓墨正文（`#1e1b18`），日光下清晰不刺眼。
 
 2. **三声部中英文排版系统（Tri-Voice Bilingual Typography · 零外部请求）**
-   - **Voice 1 · 标题与引用（出版衬线）**：将精简拉丁子集化的 **Newsreader 500**（`WOFF2` base64）直接内嵌进主题 CSS，衔接系统原生 `Noto Serif CJK SC` / `Source Han Serif SC` / `Songti SC`，免装字体即可让中英文标题同框保持书卷气。
-   - **Voice 2 · 正文与工作台（理性净黑）**：`Inter Variable` 搭配 `PingFang SC` / `HarmonyOS Sans SC` / `MiSans` / `Noto Sans CJK SC`，正文采用无单位 `1.72` 黄金行高、中文标点挤压（`"palt" 1, "kern" 1`）、`font-size-adjust: from-font`（统一中英与行内代码视觉字高）；已发送的用户消息气泡单独收紧至 `1.55` 行高并去除末段多余底边距，紧凑利落。
+   - **Voice 1 · 标题与引用（出版衬线）**：将精简拉丁子集化的 **Newsreader 500**（`WOFF2` base64）直接内嵌进主题 CSS，衔接 `Noto Serif CJK SC` / `Source Han Serif SC` / `Songti SC`，让中英文标题同框保持出版书卷气。
+   - **Voice 2 · 正文与工作台（理性净黑）**：`Inter Variable` 搭配 `PingFang SC` / `HarmonyOS Sans SC` / `MiSans` / `Noto Sans CJK SC`，正文采用无单位 `1.72` 黄金行高与中文标点挤压（`"palt" 1, "kern" 1`）；已发送的用户消息气泡单独收紧至 `1.5` 行高、`0.55rem 0.85rem` 内边距与 `text-wrap: wrap`，消除多余留白与宽度松弛。
    - **Voice 3 · 代码与标尺（人文等宽）**：同步内嵌 **IBM Plex Mono 400**（`WOFF2` base64）与 `tabular-nums` 等宽数字，代码块采用带左侧赤陶呼吸细线的「印刷批注框」样式。
 
 3. **工程工作台细节精修 & 严格可访问性校验**
@@ -81,6 +81,20 @@ t3 theme set atelier-workbench
 4. 选中 **Atelier Workbench · 砚纸精工**，外观设为 **System**。
 
 *(注：T3 Code 原生 iOS/Android App 目前官方暂不支持自定义主题；手机端推荐使用 Chrome 打开 Web 版并「添加到主屏幕」以 PWA 方式体验完整皮肤。)*
+
+---
+
+## 跨平台字体统一指南 · Cross-Platform Font Setup
+
+由于 T3 Code 主题 CSS 严格限制在 50 KB 内且禁止外链，本主题只内嵌了 **Newsreader 500**（英文标题）与 **IBM Plex Mono 400**（代码/数字），中文字体走本地系统字体栈。若希望 **macOS 与 Windows 保持一致的高定排版观感**：
+
+| 排版位置 | 主题字体栈优先级 | 跨端统一建议 |
+| :--- | :--- | :--- |
+| **中文标题（h1–h3）** | `Noto Serif CJK SC` → `Source Han Serif SC` → `Songti SC` | 一键安装开源 **思源宋体 `Noto Serif CJK SC`（Regular 400 + Medium 500）**：<br>• macOS / Linux：`./sync-desktop.sh --install-fonts`<br>• Windows：`.\sync-desktop.ps1 -InstallFonts` |
+| **中文正文与工作台** | `PingFang SC` → `HarmonyOS Sans SC` → `MiSans` → `Noto Sans CJK SC` → `Microsoft YaHei UI` | • macOS 原生即命中 `PingFang SC`；<br>• Windows 推荐安装开源免费跨端无衬线体（如 **HarmonyOS Sans SC**、**MiSans** 或 **Noto Sans CJK SC**），避免回退到微软雅黑；若个人在自有设备上装有合法授权的 `PingFang SC`（`.otf`），主题会自动优先命中以与 macOS 保持一致。 |
+| **英文标题 & 代码** | 内嵌 `Atelier Newsreader` + `Atelier Plex Mono` | 零配置，两端自动一致。 |
+
+> **提示**：在 Windows / macOS 新装系统字体后，需**彻底退出并重启 T3 Code（或浏览器）**，Chromium 才会刷新系统字体表。
 
 ---
 
